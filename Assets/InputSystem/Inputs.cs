@@ -1,11 +1,9 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
 
-namespace StarterAssets
+namespace Etherlong.Project
 {
-	public class StarterAssetsInputs : MonoBehaviour
+	public class Inputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
@@ -20,7 +18,6 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -28,7 +25,7 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
-			if(cursorInputForLook)
+			if (cursorInputForLook)
 			{
 				LookInput(value.Get<Vector2>());
 			}
@@ -43,8 +40,6 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-#endif
-
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -76,5 +71,4 @@ namespace StarterAssets
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
 }
